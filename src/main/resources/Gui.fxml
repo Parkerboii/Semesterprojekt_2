@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="441.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label text="EKG-Measuring" />
-      <HBox prefHeight="23.0" prefWidth="231.0">
-         <children>
-            <Button mnemonicParsing="false" text="Start measuring" />
-         </children>
-      </HBox>
-      <LineChart prefHeight="394.0" prefWidth="564.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </LineChart>
-   </children>
+<?import javafx.scene.shape.Polyline?>
+<FlowPane orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.GuiController">
+    <Label text="EKG-Measuring">Hej JavaFX!</Label>
+    <HBox prefHeight="19.0" prefWidth="307.0">
+        <children>
+            <Button onMouseClicked="#startEkg" text="Start EKG" />
+        </children>
+    </HBox>
+    <TextArea fx:id="ekgView" prefHeight="0" prefWidth="0" />
+    <Polyline fx:id="polyline"></Polyline>
 </FlowPane>

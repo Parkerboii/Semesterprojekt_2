@@ -1,4 +1,5 @@
 package Business;
+import Data.*;
 
 public class EkgControllerImpl implements EkgController, EKGObserver {
     Sims ekgDataRecorder = new EKGSimulator();

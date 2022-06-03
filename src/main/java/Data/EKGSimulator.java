@@ -1,4 +1,4 @@
-package Data.Presentation;
+package Data;
 
 import Business.EKGObserver;
 import Data.EkgDTO;

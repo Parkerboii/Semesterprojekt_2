@@ -1,4 +1,4 @@
-package Data.Presentation;
+package Data;
 
 import java.sql.Timestamp;
 
