@@ -16,7 +16,7 @@ public class Consumer implements Runnable {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    int EKG = queue.remove();
+                    int EKG = queue.remove() ;
 
                     notify();
 
