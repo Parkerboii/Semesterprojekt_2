@@ -10,9 +10,9 @@ public class Arduino {
         sp.setComPortTimeouts(SerialPort.TIMEOUT_WRITE_BLOCKING, 0, 0); // block until bytes can be written
 
         if (sp.openPort()) {
-            System.out.println("Port is open :)");
+            System.out.println("Port is open");
         } else {
-            System.out.println("Failed to open port :(");
+            System.out.println("Failed to open port");
             return;
         }
 
