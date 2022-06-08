@@ -16,15 +16,9 @@ public class Consumer implements Runnable {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    int EKG = queue.remove() ;
+                    int EKG = queue.remove();
 
                     notify();
-
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
 
                 }
                 }
