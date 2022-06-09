@@ -1,10 +1,13 @@
 package Business;
 
+import Data.EKGSimulator;
+import Data.Sims;
+
 import java.util.LinkedList;
 
 public class Producer implements Runnable {
     //public LinkedList<Integer> queue;
-    int ekgData;
+    Sims ekgData = new EKGSimulator();
     int capacity = 400;
 
     @Override
@@ -14,14 +17,13 @@ public class Producer implements Runnable {
             synchronized (queue) {
                 while(queue.size() >= capacity){
                     try {
-                        notify();
                         wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
+                notify();
                 queue.add(ekgData);
-
 
             }
 
