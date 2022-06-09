@@ -12,7 +12,7 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
-        LinkedList<Integer> queue = new LinkedList<>();
+        LinkedList<Sims> queue = new LinkedList<>();
         while (true) {
             synchronized (queue) {
                 while(queue.size() >= capacity){

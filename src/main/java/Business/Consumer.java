@@ -18,7 +18,7 @@ public class Consumer implements Runnable {
                     }
                     int EKG = queue.remove();
 
-                    notify() ;
+                    notify();
 
                 }
                 }
