@@ -13,7 +13,6 @@ public class SyncQueue implements EKGObserver {
     Simulator ekgSim = new EKGSimulator();
     int capacity = 400;
 
-    //Vi redder hinanden
     public SyncQueue() {
         ekgSim.setObserver(this);
         ekgSim.record();

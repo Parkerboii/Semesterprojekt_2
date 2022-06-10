@@ -15,7 +15,7 @@ public class Consumer implements Runnable {
         this.queue = queue;
         this.empty = emptyLock;
     }
-
+// We save eachother
     @Override
     public void run() {
         while (true) {
