@@ -2,15 +2,16 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<?import javafx.scene.shape.Polyline?>
 <FlowPane orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.GuiController">
     <Label text="EKG-Measuring">Hej JavaFX!</Label>
     <HBox prefHeight="19.0" prefWidth="307.0">
         <children>
             <Button onMouseClicked="#startEkg" text="Start EKG" />
+         <Button mnemonicParsing="false" text="Stop EKG" />
         </children>
     </HBox>
     <TextArea fx:id="ekgView" prefHeight="0" prefWidth="0" />
-    <Polyline fx:id="polyline"></Polyline>
+    <Polyline fx:id="polyline" />
 </FlowPane>

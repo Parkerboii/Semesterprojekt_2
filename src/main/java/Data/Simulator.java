@@ -2,7 +2,7 @@ package Data;
 
 import Business.EKGObserver;
 
-public interface Sims {
+public interface Simulator {
     void record();
     void setObserver(EKGObserver observer);
 

@@ -2,7 +2,7 @@ package Business;
 import Data.*;
 
 public class EkgControllerImpl implements EkgController, EKGObserver {
-    Sims ekgDataRecorder = new EKGSimulator();
+    Simulator ekgDataRecorder = new EKGSimulator();
     private EKGObserver observer;
     private EkgDAO ekgDAO = new SQLImplementation();
 

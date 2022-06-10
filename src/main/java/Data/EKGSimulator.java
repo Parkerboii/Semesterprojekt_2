@@ -2,12 +2,12 @@ package Data;
 
 import Business.EKGObserver;
 import Data.EkgDTO;
-import Data.Sims;
+import Data.Simulator;
 
 import java.sql.Timestamp;
 
 //hhh
-public class EKGSimulator implements Sims {
+public class EKGSimulator implements Simulator {
     private EKGObserver observer;
 
     @Override
