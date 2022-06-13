@@ -1,6 +1,11 @@
+import Presentation.GuiController;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
@@ -17,5 +22,11 @@ public class JavaFx extends Application {
         Scene scene = new Scene(pane, 1000, 600);
         stage.setScene(scene);
         stage.show();
+
+        /*stage.setOnCloseRequest(event -> {
+            event.consume();
+            stopEKG(stage);
+            });*/
     }
+
 }

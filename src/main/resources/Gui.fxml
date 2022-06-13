@@ -9,7 +9,7 @@
     <HBox prefHeight="19.0" prefWidth="307.0">
         <children>
             <Button onMouseClicked="#startEkg" text="Start EKG" />
-         <Button mnemonicParsing="false" text="Stop EKG" />
+         <Button fx:id="stopEKG" mnemonicParsing="false" text="Stop EKG" />
         </children>
     </HBox>
     <TextArea fx:id="ekgView" prefHeight="0" prefWidth="0" />

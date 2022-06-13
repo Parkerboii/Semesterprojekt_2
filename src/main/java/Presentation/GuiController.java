@@ -3,18 +3,27 @@ package Presentation;
 import Business.EKGObserver;
 import Business.EkgController;
 import Business.EkgControllerImpl;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Polyline;
+import javafx.stage.Stage;
+
 import java.sql.Timestamp;
 
 public class GuiController implements EKGObserver {
     public Polyline polyline;
+
     EkgController ekgController = new EkgControllerImpl();
     @FXML
     public TextArea ekgView;
     private Timestamp startTime;
+
 
     public void startEkg(MouseEvent mouseEvent) {
         ekgController.startRecording();
@@ -29,4 +38,17 @@ public class GuiController implements EKGObserver {
         // dividere med 1000 for at få sekunder
         polyline.getPoints().addAll((ekgData.getTime().getTime()-startTime.getTime())/250.0,ekgData.getVoltage()*100);
     }
+
+    /*Stage stage;
+    public void stopEKG(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Stopper EKG");
+        alert.setHeaderText("Du er ved at stoppe EKG");
+
+        if(alert.showAndWait().get() == ButtonType.OK) {
+            System.out.println("Du stoppede EKG");
+            stage.close();
+        }
+    }*/
+
 }
