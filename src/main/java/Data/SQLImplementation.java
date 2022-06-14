@@ -9,13 +9,18 @@ public class SQLImplementation implements EkgDAO {
     public void save(EkgData ekgDTO) {
         Connection conn = DatabaseConnector.getConnection();
         try {
-            PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO ekgDATA(CPR, voltage, time, Puls) VALUES (?,?)");
+            PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO ekgDATA(CPR, voltage, time, Puls) VALUES (?,?,?,?)");
             preparedStatement.setDouble(1,ekgDTO.getVoltage());
             preparedStatement.setTimestamp(2,ekgDTO.getTime());
 //            preparedStatement.setString(1,ekgDTO.getCPR());
 //            preparedStatement.setDouble(2,ekgDTO.getVoltage());
 //            preparedStatement.setTimestamp(3,ekgDTO.getTime());
 //            preparedStatement.setInt(4,ekgDTO.getPuls);
+
+//            preparedStatement.setString(1,ekgDTO.getCPR());
+//            preparedStatement.setString(2,ekgDTO.getFirstname());
+//            preparedStatement.setString(3,ekgDTO.getLastname());
+//            PreparedStatement preparedStatement2 = conn.prepareStatement("INSERT INTO patient(CPR, Firstname, Lastname) VALUES (?,?,?,)");
 
             preparedStatement.execute();
         } catch (SQLException e) {
