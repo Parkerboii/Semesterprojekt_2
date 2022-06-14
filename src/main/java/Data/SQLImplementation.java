@@ -16,13 +16,14 @@ public class SQLImplementation implements EkgDAO {
 //            preparedStatement.setDouble(2,ekgDTO.getVoltage());
 //            preparedStatement.setTimestamp(3,ekgDTO.getTime());
 //            preparedStatement.setInt(4,ekgDTO.getPuls);
+            preparedStatement.addBatch();
 
 //            preparedStatement.setString(1,ekgDTO.getCPR());
 //            preparedStatement.setString(2,ekgDTO.getFirstname());
 //            preparedStatement.setString(3,ekgDTO.getLastname());
 //            PreparedStatement preparedStatement2 = conn.prepareStatement("INSERT INTO patient(CPR, Firstname, Lastname) VALUES (?,?,?,)");
 
-            preparedStatement.execute();
+            preparedStatement.executeBatch();
         } catch (SQLException e) {
             e.printStackTrace();
         }
