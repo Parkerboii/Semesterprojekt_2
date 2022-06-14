@@ -1,10 +1,9 @@
-package Business;
+package Data;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.io.*;
 
-import Data.EkgDTO;
-import Data.Simulator;
+import Business.EKGObserver;
 import com.fazecast.jSerialComm.SerialPort;
 
 public class Arduino /*implements Simulator*/ {
