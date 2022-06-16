@@ -8,7 +8,7 @@ import com.fazecast.jSerialComm.SerialPort;
 
 public class Arduino /*implements Simulator*/ {
     private EKGObserver observer;
-
+            //TODO: port skal virke
         private SerialPort sp = null;
         private PrintWriter out = null;
         private BufferedReader in = null;

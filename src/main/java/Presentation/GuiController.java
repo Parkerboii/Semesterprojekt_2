@@ -5,13 +5,19 @@ import Business.EkgController;
 import Business.EkgControllerImpl;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.shape.Polyline;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 
-public class GuiController implements EKGObserver {
+public class GuiController extends CPRGuiController implements EKGObserver {
     public Polyline polyline;
     ObservableList<Double> current_point;
     double border = 200.0;
@@ -23,9 +29,22 @@ public class GuiController implements EKGObserver {
 
 
     public void startEkg(MouseEvent mouseEvent) {
-        ekgController.startRecording();
-        this.startTime = new Timestamp(System.currentTimeMillis());
-        ekgController.registerObserver(this);
+        if (CPRnumber != null){
+            ekgController.startRecording();
+            this.startTime = new Timestamp(System.currentTimeMillis());
+            ekgController.registerObserver(this);
+        }
+        else{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CPRGUI.fxml"));
+            try {
+                AnchorPane anchorPane = fxmlLoader.load();
+                Stage loadStage = new Stage();
+                loadStage.setScene(new Scene(anchorPane));
+                loadStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

@@ -26,17 +26,17 @@ public class EkgControllerImpl implements EkgController, EKGObserver {
     public void handle(EkgData ekgData){
         if(observer != null){
             observer.handle(ekgData);
-        }
-        System.out.println("Got some data!");
-        enqueue(ekgData);
-        System.out.println("Queue size: " + queue.size());
 
+            System.out.println("Got some data!");
+            enqueue(ekgData);
+            System.out.println("Queue size: " + queue.size());
+        }
         ekgDAO.save(ekgData);
     }
 
     public EkgControllerImpl() {
-        ekgSim.setObserver(this);
-        ekgSim.record();
+        ekgDataRecorder.setObserver(this);
+        ekgDataRecorder.record();
         Consumer consumer = new Consumer(queue, emptyLock);
         new Thread(consumer).start();
     }
@@ -46,6 +46,7 @@ public class EkgControllerImpl implements EkgController, EKGObserver {
         synchronized (queue){
             if (queue.size()<400){
                 queue.add(ekgData);
+//                notify();
             }
             synchronized (emptyLock) {
                 emptyLock.notify();
