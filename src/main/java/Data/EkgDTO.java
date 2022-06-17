@@ -12,7 +12,6 @@ public class EkgDTO implements EkgData {
     public EkgDTO(double voltage, Timestamp time){
         this.voltage = voltage;
         this.time = time;
-
     }
 
     public EkgDTO() {

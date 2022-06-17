@@ -13,6 +13,8 @@ public class EkgControllerImpl implements EkgController, EKGObserver {
     Simulator ekgSim = new EKGSimulator();
     int capacity = 400;
     private String currentCPR;
+    private String currentFirstName;
+    private String currentLastName;
 
     @Override
     public void startRecording(){
@@ -26,6 +28,17 @@ public class EkgControllerImpl implements EkgController, EKGObserver {
     @Override
     public void setCurrentCpr(String cpr) {
         this.currentCPR = cpr;
+    }
+
+    @Override
+    public void setCurrentFirstName(String first) {
+        this.currentFirstName = first;
+    }
+
+    @Override
+    public void setCurrentLastName(String last) {
+        this.currentLastName = last;
+
     }
 
     @Override

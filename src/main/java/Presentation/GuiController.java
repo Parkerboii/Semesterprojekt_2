@@ -31,6 +31,8 @@ public class GuiController extends CPRGuiController implements EKGObserver {
     @FXML
     Label actualCPR;
     private String CPRnumber;
+    private String firstName;
+    private String lastName;
 
     public void displayCpr(String currentCpr){
         actualCPR.setText("CPR: " + currentCpr);
@@ -72,6 +74,16 @@ public class GuiController extends CPRGuiController implements EKGObserver {
         if (current_point.size() >= border){
             current_point.clear();
         }
+    }
+
+    public void setCurrentFirstName(String first) {
+        firstName = first;
+        ekgController.setCurrentFirstName(first);
+    }
+
+    public void setCurrentLastName(String last) {
+        lastName = last;
+        ekgController.setCurrentLastName(last);
     }
 
     /*Stage stage;

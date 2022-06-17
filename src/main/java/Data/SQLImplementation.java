@@ -10,17 +10,27 @@ public class SQLImplementation implements EkgDAO {
         Connection conn = DatabaseConnector.getConnection();
         try {
             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO ekgDATA(CPR, voltage, time) VALUES (?,?,?)");
-            preparedStatement.setString(1,ekgDTO.getID()); //TODO: Denne CPR
+            preparedStatement.setString(1,ekgDTO.getID());
             preparedStatement.setDouble(2,ekgDTO.getVoltage());
             preparedStatement.setTimestamp(3,ekgDTO.getTime());
             preparedStatement.addBatch();
-
-//            preparedStatement.setString(1,ekgDTO.getCPR());
-//            preparedStatement.setString(2,ekgDTO.getFirstname());
-//            preparedStatement.setString(3,ekgDTO.getLastname());
-//            PreparedStatement preparedStatement2 = conn.prepareStatement("INSERT INTO patient(CPR, Firstname, Lastname) VALUES (?,?,?,)");
-
             preparedStatement.executeBatch();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void save(PatientData patientData) {
+        Connection conn = DatabaseConnector.getConnection();
+        try {
+            PreparedStatement preparedStatement2 = conn.prepareStatement("INSERT INTO patient(CPR, Firstname, Lastname) VALUES (?,?,?)");
+            preparedStatement2.setString(1,patientDTO.getID());
+            preparedStatement2.setString(2,patientDTO.getFirstName());
+            preparedStatement2.setString(3,patientDTO.getLastName());
+            preparedStatement2.addBatch();
+            preparedStatement2.executeBatch();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
