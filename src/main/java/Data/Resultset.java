@@ -44,10 +44,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
-class Get_Result_Set{
-    public static void main(String[] args) {
+public class Resultset {
+    public static void getResultSet(){
         Connection db_con = null;
         PreparedStatement db_Statement = null;
         ResultSet result_set = null;

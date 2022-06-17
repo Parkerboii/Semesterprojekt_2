@@ -3,18 +3,15 @@ package Presentation;
 import Business.EKGObserver;
 import Business.EkgController;
 import Business.EkgControllerImpl;
-import Data.PatientDTO;
+import Data.Resultset;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Polyline;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Timestamp;
 
 public class GuiController extends CPRGuiController implements EKGObserver {
@@ -34,6 +31,7 @@ public class GuiController extends CPRGuiController implements EKGObserver {
     public void displayCpr(String currentCpr){
         actualCPR.setText("CPR: " + currentCpr);
     }
+
 
     public void setCurrentCPR(String cpr) {
          CPRnumber = cpr;
@@ -60,6 +58,10 @@ public class GuiController extends CPRGuiController implements EKGObserver {
         if (current_point.size() >= border){
             current_point.clear();
         }
+    }
+
+    public void VisPatientData(ActionEvent actionEvent) {
+        Resultset.getResultSet();
     }
 
     /*Stage stage;

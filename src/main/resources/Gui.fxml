@@ -10,7 +10,8 @@
         <children>
             <Button onMouseClicked="#startEkg" text="Start EKG" />
          <Button fx:id="stopEKG" mnemonicParsing="false" text="Stop EKG" />
-         <Label fx:id="actualCPR" text="CPR: " />
+            <Button onAction="#VisPatientData">VisPatientData</Button>
+            <Label fx:id="actualCPR" text="CPR: " />
         </children>
     </HBox>
     <TextArea fx:id="ekgView" prefHeight="0" prefWidth="0" />
