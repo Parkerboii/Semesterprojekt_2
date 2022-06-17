@@ -38,9 +38,6 @@ public class Consumer implements Runnable {
                         queue.clear();
                         System.out.println("Saving some data! : " + saveList.toString());
                         System.out.println("Removed som snazzy data!");
-                        //TODO: Save the data!
-                        //TODO: Få Consumeren til at virke (syncronize empty)
-                        //TODO: port
                         //ekgDAO.save();
                     }
 //                    if (queue.isEmpty()){

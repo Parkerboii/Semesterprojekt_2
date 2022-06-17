@@ -25,7 +25,7 @@ public class SQLImplementation implements EkgDAO {
         Connection conn = DatabaseConnector.getConnection();
         try {
             PreparedStatement preparedStatement2 = conn.prepareStatement("INSERT INTO patient(CPR, Firstname, Lastname) VALUES (?,?,?)");
-            preparedStatement2.setString(1,patientDTO.getID());
+            preparedStatement2.setString(1,patientDTO.getID()); //TODO: Få den til at virke
             preparedStatement2.setString(2,patientDTO.getFirstName());
             preparedStatement2.setString(3,patientDTO.getLastName());
             preparedStatement2.addBatch();

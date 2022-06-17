@@ -49,7 +49,6 @@ public class GuiController extends CPRGuiController implements EKGObserver {
             this.startTime = new Timestamp(System.currentTimeMillis());
             ekgController.registerObserver(this);
         }
-        //TODO: DENNE CPRnumber og den i SQLImplementation
 
         else{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CPRGUI.fxml"));

@@ -34,6 +34,7 @@ public class CPRGuiController {
                 root = loader.load();
                 GuiController guiController = loader.getController();
                 guiController.setCurrentCPR(CPRnumber);
+                guiController.displayCpr(CPRnumber);
                 guiController.setCurrentFirstName(firstName);
                 guiController.setCurrentLastName(lastName);
 
