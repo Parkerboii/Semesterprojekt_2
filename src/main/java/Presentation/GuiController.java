@@ -36,7 +36,7 @@ public class GuiController extends CPRGuiController implements EKGObserver {
     }
 
     public void startEkg(MouseEvent mouseEvent) {
-        if (CPRnumber != null){
+       /* if (CPRnumber != null){
             ekgController.startRecording();
             this.startTime = new Timestamp(System.currentTimeMillis());
             ekgController.registerObserver(this);
@@ -51,7 +51,10 @@ public class GuiController extends CPRGuiController implements EKGObserver {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
+        ekgController.startRecording();
+        this.startTime = new Timestamp(System.currentTimeMillis());
+        ekgController.registerObserver(this);
     }
 
     @Override

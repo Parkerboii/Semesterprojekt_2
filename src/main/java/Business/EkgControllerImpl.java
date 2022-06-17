@@ -1,16 +1,18 @@
 package Business;
 import Data.*;
-
+import com.fazecast.jSerialComm.SerialPort;
 import java.util.LinkedList;
 
+import java.util.List;
+
 public class EkgControllerImpl implements EkgController, EKGObserver {
-    Simulator ekgDataRecorder = new EKGSimulator();
+    Simulator ekgDataRecorder = new Arduino();
     private EKGObserver observer;
     private EkgDAO ekgDAO = new SQLImplementation();
 
     public LinkedList<EkgData> queue = new LinkedList<>();
     public Object emptyLock = new Object();
-    Simulator ekgSim = new EKGSimulator();
+    Simulator ekgSim = new Arduino();
     int capacity = 400;
 
     @Override
@@ -56,5 +58,14 @@ public class EkgControllerImpl implements EkgController, EKGObserver {
 
     public static void main(String[] args) {
         new EkgControllerImpl();
+    }
+    public void save(List<EkgData> Queue){
+        //Simulate a slow save
+        try {
+            Thread.sleep(500);
+            System.out.println("Data Saved: " + Queue);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
