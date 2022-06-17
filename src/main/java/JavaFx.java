@@ -30,7 +30,7 @@ public class JavaFx extends Application {
 //    }
         @Override
         public void start(Stage stage) throws Exception {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CPRGui.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CPRGui.fxml"));
             AnchorPane pane = loader.load();
             Scene scene = new Scene(pane, 1000, 600);
             stage.setScene(scene);

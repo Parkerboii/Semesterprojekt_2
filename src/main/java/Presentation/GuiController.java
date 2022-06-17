@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +28,12 @@ public class GuiController extends CPRGuiController implements EKGObserver {
     public TextArea ekgView;
     private Timestamp startTime;
 
+    @FXML
+    Label actualCPR;
+
+    public void displayCpr(String currentCpr){
+        actualCPR.setText("CPR: " + currentCpr);
+    }
 
     public void startEkg(MouseEvent mouseEvent) {
         if (CPRnumber != null){
@@ -57,6 +64,11 @@ public class GuiController extends CPRGuiController implements EKGObserver {
         if (current_point.size() >= border){
             current_point.clear();
         }
+    }
+
+    public String setCurrentCPR(String cprNumber) {
+        String CPRnumber = cprNumber;
+        return CPRnumber;
     }
 
     /*Stage stage;

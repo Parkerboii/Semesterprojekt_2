@@ -44,7 +44,7 @@ public class EkgControllerImpl implements EkgController, EKGObserver {
 
     public void enqueue(EkgData ekgData){
         synchronized (queue){
-            if (queue.size()<400){
+            if (queue.size()<capacity){
                 queue.add(ekgData);
 //                notify();
             }
