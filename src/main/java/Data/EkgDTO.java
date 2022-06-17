@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 public class EkgDTO implements EkgData {
     private Timestamp time;
     private double voltage;
+    private String id;
 
     public EkgDTO(double voltage, Timestamp time){
         this.voltage = voltage;
@@ -20,6 +21,16 @@ public class EkgDTO implements EkgData {
     @Override
     public double getVoltage() {
         return voltage;
+    }
+
+    @Override
+    public void setID(String id) {
+        this.id=id;
+    }
+
+    @Override
+    public String getID() {
+        return id;
     }
 
     @Override

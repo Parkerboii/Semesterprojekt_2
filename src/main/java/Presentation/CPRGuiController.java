@@ -22,23 +22,21 @@ public class CPRGuiController {
 
 //TODO: Få GUI til at virke
         public void recordCPR(javafx.event.ActionEvent actionEvent) throws IOException {
-        if (CPRinput != null) {
-            String CPRnumber = CPRinput.getText();
+            if (CPRinput != null) {
+                String CPRnumber = CPRinput.getText();
 
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui.fxml"));
-            root = loader.load();
-            GuiController guiController = loader.getController();
-            guiController.setCurrentCPR(CPRnumber);
-
-            GuiController guiController1 = loader.getController();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gui.fxml"));
+                root = loader.load();
+                GuiController guiController = loader.getController();
+                guiController.setCurrentCPR(CPRnumber);
 
 
-            stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
+                stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
     }
 }
 

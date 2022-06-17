@@ -40,7 +40,6 @@ public class Consumer implements Runnable {
                         System.out.println("Removed som snazzy data!");
                         //TODO: Save the data!
                         //TODO: Få Consumeren til at virke (syncronize empty)
-                        //TODO: CPRGUI Hjælp'
                         //TODO: port
                         //ekgDAO.save();
                     }

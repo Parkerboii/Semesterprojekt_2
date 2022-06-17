@@ -10,7 +10,7 @@ public class SQLImplementation implements EkgDAO {
         Connection conn = DatabaseConnector.getConnection();
         try {
             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO ekgDATA(CPR, voltage, time) VALUES (?,?,?)");
-            //preparedStatement.setString(1,CPRnumber);
+            preparedStatement.setString(1,ekgDTO.getID()); //TODO: Denne CPR
             preparedStatement.setDouble(2,ekgDTO.getVoltage());
             preparedStatement.setTimestamp(3,ekgDTO.getTime());
             preparedStatement.addBatch();

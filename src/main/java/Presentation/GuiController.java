@@ -30,9 +30,15 @@ public class GuiController extends CPRGuiController implements EKGObserver {
 
     @FXML
     Label actualCPR;
+    private String CPRnumber;
 
     public void displayCpr(String currentCpr){
         actualCPR.setText("CPR: " + currentCpr);
+    }
+
+    public void setCurrentCPR(String cpr) {
+         CPRnumber = cpr;
+         ekgController.setCurrentCpr(cpr);
     }
 
     public void startEkg(MouseEvent mouseEvent) {
@@ -41,6 +47,8 @@ public class GuiController extends CPRGuiController implements EKGObserver {
             this.startTime = new Timestamp(System.currentTimeMillis());
             ekgController.registerObserver(this);
         }
+        //TODO: DENNE CPRnumber og den i SQLImplementation
+
         else{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CPRGUI.fxml"));
             try {
@@ -64,11 +72,6 @@ public class GuiController extends CPRGuiController implements EKGObserver {
         if (current_point.size() >= border){
             current_point.clear();
         }
-    }
-
-    public String setCurrentCPR(String cprNumber) {
-        String CPRnumber = cprNumber;
-        return CPRnumber;
     }
 
     /*Stage stage;
