@@ -54,7 +54,7 @@ public class Arduino implements Simulator {
     public void close() {
         try {
             in.close();
-            sp.closePort();
+            sp.closePort() ;
 
         } catch (IOException ex) {
             System.out.println("Serial Port Exception: " + ex);
