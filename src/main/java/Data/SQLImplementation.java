@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SQLImplementation implements EkgDAO {
+public class SQLImplementation implements EkgDAO, PatientDAO {
     @Override
     public void save(EkgData ekgDTO) {
         Connection conn = DatabaseConnector.getConnection();
@@ -21,11 +21,11 @@ public class SQLImplementation implements EkgDAO {
         }
     }
     @Override
-    public void save(PatientData patientData) {
+    public void save(PatientData patientDTO) {
         Connection conn = DatabaseConnector.getConnection();
         try {
             PreparedStatement preparedStatement2 = conn.prepareStatement("INSERT INTO patient(CPR, Firstname, Lastname) VALUES (?,?,?)");
-            preparedStatement2.setString(1,patientDTO.getID()); //TODO: Få den til at virke
+            preparedStatement2.setString(1,patientDTO.getCPR()); //TODO: Få den til at virke
             preparedStatement2.setString(2,patientDTO.getFirstName());
             preparedStatement2.setString(3,patientDTO.getLastName());
             preparedStatement2.addBatch();

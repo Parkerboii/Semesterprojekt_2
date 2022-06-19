@@ -1,5 +1,8 @@
 package Presentation;
 
+import Data.PatientDAO;
+import Data.PatientDTO;
+import Data.SQLImplementation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -17,34 +20,47 @@ public class CPRGuiController {
     public javafx.scene.control.TextField CPRinput;
     public javafx.scene.control.TextField firstNameText;
     public javafx.scene.control.TextField lastNameText;
+    @FXML
+    javafx.scene.control.Label fillAll;
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-
-//TODO: Få GUI til at virke
-        public void recordCPR(javafx.event.ActionEvent actionEvent) throws IOException {
-            if (CPRinput != null) {
-                String CPRnumber = CPRinput.getText();
-                String firstName = firstNameText.getText();
-                String lastName = lastNameText.getText();
-
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gui.fxml"));
-                root = loader.load();
-                GuiController guiController = loader.getController();
-                guiController.setCurrentCPR(CPRnumber);
-                guiController.displayCpr(CPRnumber);
-                guiController.setCurrentFirstName(firstName);
-                guiController.setCurrentLastName(lastName);
-
-
-                stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            }
+    private PatientDAO patientDAO = (PatientDAO) new SQLImplementation();
+    private boolean checkEmpty(javafx.scene.control.TextField toCheck){
+        return !toCheck.getText().trim().isEmpty();
     }
+
+    public void recordCPR(javafx.event.ActionEvent actionEvent) throws IOException {
+        if (checkEmpty(CPRinput) && checkEmpty(firstNameText) && checkEmpty(lastNameText)) {
+            String CPRnumber = CPRinput.getText();
+            String firstName = firstNameText.getText();
+            String lastName = lastNameText.getText();
+
+            PatientDTO patientDTO = new PatientDTO();
+            patientDTO.setCPR(CPRnumber);
+            patientDTO.setFirstName(firstName);
+            patientDTO.setLastName(lastName);
+            patientDAO.save(patientDTO);
+
+
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gui.fxml"));
+            root = loader.load();
+            GuiController guiController = loader.getController();
+            guiController.setCurrentCPR(CPRnumber);
+            guiController.displayCpr(CPRnumber);
+
+
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        else{
+            fillAll.setText("All fields are required");
+        }
+    }
+
 }
 
 

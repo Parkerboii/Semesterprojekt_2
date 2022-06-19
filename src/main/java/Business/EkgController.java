@@ -6,7 +6,4 @@ public interface EkgController {
 
     void setCurrentCpr(String cpr);
 
-    void setCurrentFirstName(String first);
-
-    void setCurrentLastName(String last);
 }

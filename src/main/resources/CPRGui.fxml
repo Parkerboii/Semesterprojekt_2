@@ -12,5 +12,6 @@
       <TextField fx:id="lastNameText" layoutX="227.0" layoutY="213.0" />
       <Label fx:id="firstName" layoutX="171.0" layoutY="191.0" text="First name" />
       <Label fx:id="lastName" layoutX="172.0" layoutY="217.0" text="Last name" />
+      <Label fx:id="fillAll" layoutX="260.0" layoutY="143.0" text="Fill out all fields" />
    </children>
 </AnchorPane>

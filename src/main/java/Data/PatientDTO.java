@@ -1,33 +1,31 @@
 package Data;
 
-public class PatientDTO implements PatientData{
-    private String firstName;
+public class PatientDTO implements PatientData {
+    private String CPR;
     private String lastName;
-    private String id;
+    private String firstName;
 
-    @Override
-    public void setFirstName(String first) {
+    public void setCPR(String cpr) {
+        this.CPR = cpr;
+    }
+
+    public String getCPR() {
+        return CPR;
+    }
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    @Override
     public String getFirstName() {
         return firstName;
     }
 
-    @Override
-    public void setLastName(String last) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    @Override
     public String getLastName() {
         return lastName;
     }
-
-    @Override
-    public String getID() {
-        return id;
-    }
-
 }
