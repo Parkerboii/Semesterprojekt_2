@@ -36,7 +36,7 @@ public class SQLImplementation implements EkgDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 EkgDTO ekgDTO = new EkgDTO();
-                ekgDTO.setVoltage(resultSet.getDouble("voltage"));
+                ekgDTO.setVoltage(resultSet.getInt("voltage"));
                 ekgDTO.setTime(resultSet.getTimestamp("time"));
                 data.add(ekgDTO);
             }

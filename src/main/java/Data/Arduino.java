@@ -2,10 +2,8 @@ package Data;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.io.*;
-
 import Business.EKGObserver;
 import com.fazecast.jSerialComm.SerialPort;
-import static java.lang.Integer.parseInt;
 
 public class Arduino implements Simulator {
     private EKGObserver observer;
@@ -32,9 +30,8 @@ public class Arduino implements Simulator {
                     if (observer != null) {
                         if (sp.bytesAvailable() > 0) {
                             var input = in.readLine();
-                            int result = Integer.parseInt(input);
-                            observer.handle(new EkgDTO(result, new Timestamp(System.currentTimeMillis())));
-                            System.out.println("DATA" + result);
+                            int ekgData = Integer.parseInt(input);
+                            observer.handle(new EkgDTO(ekgData, new Timestamp(System.currentTimeMillis())));
                         }
                     }
 
@@ -54,7 +51,7 @@ public class Arduino implements Simulator {
     public void close() {
         try {
             in.close();
-            sp.closePort() ;
+            sp.closePort();
 
         } catch (IOException ex) {
             System.out.println("Serial Port Exception: " + ex);
