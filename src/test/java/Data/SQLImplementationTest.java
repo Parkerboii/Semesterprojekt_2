@@ -52,7 +52,7 @@ class SQLImplementationTest {
         data.setVoltage(5);
         Timestamp ts = new Timestamp(1313045568);
         data.setTime(ts);
-        impl.save(data);
+        impl.save((List<EkgData>) data);
 
         System.out.printf(impl.load(ts).toString());
 
