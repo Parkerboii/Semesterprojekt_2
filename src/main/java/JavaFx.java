@@ -15,23 +15,12 @@ public class JavaFx extends Application {
     public static void run() {
         launch();
     }
-//    @Override
-//    public void start(Stage stage) throws Exception {
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gui.fxml"));
-//        FlowPane pane = loader.load();
-//        Scene scene = new Scene(pane, 1000, 600);
-//        stage.setScene(scene);
-//        stage.show();
-//
-//        /*stage.setOnCloseRequest(event -> {
-//            event.consume();
-//            stopEKG(stage);
-//            });*/
-//    }
+
+
         @Override
         public void start(Stage stage) throws Exception {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CPRGui.fxml"));
-            AnchorPane pane = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gui.fxml"));
+            FlowPane pane = loader.load();
             Scene scene = new Scene(pane, 1000, 600);
             stage.setScene(scene);
             stage.show();

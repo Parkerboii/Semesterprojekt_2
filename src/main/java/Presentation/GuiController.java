@@ -56,7 +56,7 @@ public class GuiController extends CPRGuiController implements EKGObserver {
         current_point = polyline.getPoints();
         //Bruger getTime metoden, og bruger så en anden getTime metode, som konvertere fra Timestamp til long, og
         // dividere med 1000 for at få sekunder
-        polyline.getPoints().addAll((ekgData.getTime().getTime()-startTime.getTime())/250.0,ekgData.getVoltage()*100);
+        polyline.getPoints().addAll((ekgData.getTime().getTime()-startTime.getTime())/250.0, (double) (ekgData.getVoltage()*100));
         if (current_point.size() >= border){
             current_point.clear();
         }

@@ -18,12 +18,12 @@ class SQLImplementationTest {
         SQLImplementation impl = new SQLImplementation();
         EkgData data = new EkgData() {
             @Override
-            public void setVoltage(double voltage) {
+            public void setVoltage(int voltage) {
 
             }
 
             @Override
-            public double getVoltage() {
+            public int getVoltage() {
                 return 0;
             }
 
@@ -49,7 +49,7 @@ class SQLImplementationTest {
         };
         List<EkgDTO> data1 = new ArrayList<>();
         data.setID("0204065010");
-        data.setVoltage(5.0);
+        data.setVoltage(5);
         Timestamp ts = new Timestamp(1313045568);
         data.setTime(ts);
         impl.save(data);

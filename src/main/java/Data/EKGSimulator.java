@@ -1,12 +1,13 @@
-package Data;
+/*package Data;
 
 import Business.EKGObserver;
+import Business.EkgController;
 import Data.EkgDTO;
 import Data.Simulator;
 
 import java.sql.Timestamp;
 
-//hhh
+
 public class EKGSimulator implements Simulator {
     private EKGObserver observer;
 
@@ -36,4 +37,6 @@ public class EKGSimulator implements Simulator {
 
     @Override
     public void setObserver(EKGObserver observer) { this.observer = observer; }
+
 }
+*/

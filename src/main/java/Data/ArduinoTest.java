@@ -1,4 +1,4 @@
-package Data;
+/*package Data;
 
 import Business.EKGObserver;
 import org.junit.jupiter.api.Assertions;
@@ -31,3 +31,4 @@ class ArduinoTest  implements EKGObserver {
         this.data.add(ekgData);
     }
 }
+*/
