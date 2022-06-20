@@ -6,13 +6,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class EkgControllerImpl implements EkgController, EKGObserver {
-    Simulator ekgDataRecorder = new Arduino();
+    Simulator ekgDataRecorder = new Arduino("COM5 (Arduino Uno)");
     private EKGObserver observer;
     private EkgDAO ekgDAO = new SQLImplementation();
 
     public LinkedList<EkgData> queue = new LinkedList<>();
     public Object emptyLock = new Object();
-    Simulator ekgSim = new Arduino();
     int capacity = 400;
 
     private String currentCPR;

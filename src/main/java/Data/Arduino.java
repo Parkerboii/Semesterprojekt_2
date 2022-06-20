@@ -13,7 +13,6 @@ public class Arduino implements Simulator {
     private BufferedReader in = null;
 
         public Arduino(String portName) {
-
         sp = SerialPort.getCommPort("COM5 (Arduino Uno)");
         sp.openPort();//Open serial port
         sp.setComPortParameters(38400, 8, 1, 0);//Set params.
@@ -32,9 +31,9 @@ public class Arduino implements Simulator {
                     if (observer != null) {
                         if (sp.bytesAvailable() > 0) {
                             var input = in.readLine();
-                            int result = Integer.parseInt(input);
-                            observer.handle(new EkgDTO(result, new Timestamp(System.currentTimeMillis())));
-                            System.out.println("DATA" + result);
+                            int ekgData = Integer.parseInt(input);
+                            observer.handle(new EkgDTO(ekgData, new Timestamp(System.currentTimeMillis())));
+
                         }
                     }
 

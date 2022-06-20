@@ -4,8 +4,8 @@ import java.sql.Timestamp;
 
 public interface EkgData {
 
-    void setVoltage(double voltage);
-    double getVoltage();
+    void setVoltage(int voltage);
+    int getVoltage();
     void setID(String id);
     String getID();
 
