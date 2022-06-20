@@ -1,5 +1,6 @@
 package Data;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.sql.Timestamp;
 import java.io.*;
 
@@ -12,11 +13,10 @@ public class Arduino implements Simulator {
     private SerialPort sp = null;
     private BufferedReader in = null;
 
-        public Arduino(String portName) {
-        sp = SerialPort.getCommPort("COM5 (Arduino Uno)");
-        sp.openPort();//Open serial port
+    public Arduino(String portName) {
+        sp = SerialPort.getCommPort(portName);
         sp.setComPortParameters(38400, 8, 1, 0);//Set params.
-        sp.setFlowControl(SerialPort.FLOW_CONTROL_DISABLED);
+       // sp.setFlowControl(SerialPort.FLOW_CONTROL_DISABLED);
         in = new BufferedReader(new InputStreamReader(sp.getInputStream()));
     }
 
@@ -24,23 +24,32 @@ public class Arduino implements Simulator {
     @Override
     public void record() {
         sp.openPort();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("PORT OPEN");
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    if (observer != null) {
-                        if (sp.bytesAvailable() > 0) {
-                            var input = in.readLine();
-                            int ekgData = Integer.parseInt(input);
-                            observer.handle(new EkgDTO(ekgData, new Timestamp(System.currentTimeMillis())));
-
+                while (true) {
+                    try {
+                        if (observer != null) {
+                            if (sp.bytesAvailable() > 0) {
+                                var input = in.readLine();
+                                int ekgData = 0;
+                                if (input.length() > 0) {
+                                    ekgData = parseInt(input);
+                                }
+                                observer.handle(new EkgDTO(ekgData, new Timestamp(System.currentTimeMillis())));
+                            }
                         }
+
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
                     }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
-
             }
         }).start();
     }
@@ -51,12 +60,6 @@ public class Arduino implements Simulator {
     }
 
     public void close() {
-        try {
-            in.close();
             sp.closePort();
-
-        } catch (IOException ex) {
-            System.out.println("Serial Port Exception: " + ex);
-        }
     }
 }

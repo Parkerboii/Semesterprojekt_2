@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class EkgControllerImpl implements EkgController, EKGObserver {
-    Simulator ekgDataRecorder = new Arduino("COM5 (Arduino Uno)");
+    Simulator ekgDataRecorder = new Arduino("COM5");
     private EKGObserver observer;
     private EkgDAO ekgDAO = new SQLImplementation();
 
@@ -35,16 +35,15 @@ public class EkgControllerImpl implements EkgController, EKGObserver {
             ekgData.setID(currentCPR);
 
 
-            System.out.println("Got some data!");
+            //System.out.println("Got some data!");
             enqueue(ekgData);
-            System.out.println("Queue size: " + queue.size());
+            //System.out.println("Queue size: " + queue.size());
         }
         //ekgDAO.save(ekgData);
     }
 
     public EkgControllerImpl() {
         ekgDataRecorder.setObserver(this);
-        ekgDataRecorder.record();
         Consumer consumer = new Consumer(queue, emptyLock);
         new Thread(consumer).start();
     }

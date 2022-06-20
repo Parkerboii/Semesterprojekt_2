@@ -4,6 +4,7 @@ import Business.EKGObserver;
 import Business.EkgController;
 import Business.EkgControllerImpl;
 import Data.PatientDTO;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,26 +41,27 @@ public class GuiController extends CPRGuiController implements EKGObserver {
          ekgController.setCurrentCpr(cpr);
     }
 
-
     public void startEkg(MouseEvent mouseEvent) {
         if (CPRnumber != null){
             ekgController.startRecording();
+            polyline.getPoints().addAll(10.0, 10.0,20.0,20.0);
             this.startTime = new Timestamp(System.currentTimeMillis());
             ekgController.registerObserver(this);
         }
     }
 
-
     @Override
     public void handle(Data.EkgData ekgData) {
-        ekgView.setText(ekgView.getText()+"\n" + ekgData);
-        current_point = polyline.getPoints();
+        //current_point = polyline.getPoints();
         //Bruger getTime metoden, og bruger så en anden getTime metode, som konvertere fra Timestamp til long, og
         // dividere med 1000 for at få sekunder
-        polyline.getPoints().addAll((ekgData.getTime().getTime()-startTime.getTime())/250.0, (double) (ekgData.getVoltage()*100));
-        if (current_point.size() >= border){
-            current_point.clear();
-        }
+        double x = (ekgData.getTime().getTime()-startTime.getTime())/20.0;
+        int y = ekgData.getVoltage()/10;
+        //System.out.println(polyline.getPoints());
+        Platform.runLater(()-> polyline.getPoints().addAll(x, (double) y));
+        //if (current_point.size() >= border){
+         //   current_point.clear();
+        //}
     }
 
     /*Stage stage;

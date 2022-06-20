@@ -25,6 +25,17 @@ public class EkgDTO implements EkgData {
     }
 
     @Override
+    public String toString() {
+        return "EkgDTO{" +
+                "time=" + time +
+                ", voltage=" + voltage +
+                ", id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
+
+    @Override
     public void setID(String id) {
         this.id=id;
     }
