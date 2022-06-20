@@ -28,7 +28,7 @@ public class SQLImplementation implements EkgDAO, PatientDAO {
             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO ekgDATA(CPR, voltage, time) VALUES (?,?,?)");
             for (int i = 0; i < ekgData.size(); i++) {
                 preparedStatement.setString(1,ekgData.get(i).getID());
-                preparedStatement.setDouble(2,ekgData.get(i).getVoltage());
+                preparedStatement.setInt(2,ekgData.get(i).getVoltage());
                 preparedStatement.setTimestamp(3,ekgData.get(i).getTime());
                 preparedStatement.addBatch();
             }
