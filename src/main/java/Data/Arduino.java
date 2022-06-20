@@ -12,7 +12,7 @@ public class Arduino implements Simulator {
     private SerialPort sp = null;
     private BufferedReader in = null;
 
-    public Arduino() {
+        public Arduino(String portName) {
 
         sp = SerialPort.getCommPort("COM5 (Arduino Uno)");
         sp.openPort();//Open serial port

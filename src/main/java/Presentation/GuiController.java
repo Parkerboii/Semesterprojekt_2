@@ -3,6 +3,7 @@ package Presentation;
 import Business.EKGObserver;
 import Business.EkgController;
 import Business.EkgControllerImpl;
+import Data.PatientDTO;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,32 +31,26 @@ public class GuiController extends CPRGuiController implements EKGObserver {
 
     @FXML
     Label actualCPR;
+    private String CPRnumber;
 
     public void displayCpr(String currentCpr){
         actualCPR.setText("CPR: " + currentCpr);
     }
 
+    public void setCurrentCPR(String cpr) {
+         CPRnumber = cpr;
+         ekgController.setCurrentCpr(cpr);
+    }
+
+
     public void startEkg(MouseEvent mouseEvent) {
-       /* if (CPRnumber != null){
+        if (CPRnumber != null){
             ekgController.startRecording();
             this.startTime = new Timestamp(System.currentTimeMillis());
             ekgController.registerObserver(this);
         }
-        else{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CPRGUI.fxml"));
-            try {
-                AnchorPane anchorPane = fxmlLoader.load();
-                Stage loadStage = new Stage();
-                loadStage.setScene(new Scene(anchorPane));
-                loadStage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }*/
-        ekgController.startRecording();
-        this.startTime = new Timestamp(System.currentTimeMillis());
-        ekgController.registerObserver(this);
     }
+
 
     @Override
     public void handle(Data.EkgData ekgData) {
@@ -67,11 +62,6 @@ public class GuiController extends CPRGuiController implements EKGObserver {
         if (current_point.size() >= border){
             current_point.clear();
         }
-    }
-
-    public String setCurrentCPR(String cprNumber) {
-        String CPRnumber = cprNumber;
-        return CPRnumber;
     }
 
     /*Stage stage;

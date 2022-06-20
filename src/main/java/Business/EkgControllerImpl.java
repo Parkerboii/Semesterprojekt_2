@@ -15,6 +15,8 @@ public class EkgControllerImpl implements EkgController, EKGObserver {
     Simulator ekgSim = new Arduino();
     int capacity = 400;
 
+    private String currentCPR;
+
     @Override
     public void startRecording(){
         ekgDataRecorder.record();
@@ -25,9 +27,14 @@ public class EkgControllerImpl implements EkgController, EKGObserver {
     public void registerObserver(EKGObserver ekgObserver){this.observer = ekgObserver;}
 
     @Override
+    public void setCurrentCpr(String cpr) { this.currentCPR = cpr; }
+
+    @Override
     public void handle(EkgData ekgData){
         if(observer != null){
             observer.handle(ekgData);
+            ekgData.setID(currentCPR);
+
 
             System.out.println("Got some data!");
             enqueue(ekgData);
