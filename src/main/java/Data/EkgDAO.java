@@ -13,4 +13,3 @@ public interface EkgDAO {
 
     //List<EkgDTO> load(Timestamp time);
 }
-//
