@@ -31,14 +31,13 @@ public class Consumer implements Runnable {
 //                    }
 //
 //                }
+            LinkedList<EkgData> saveList = new LinkedList<EkgData>();
                 synchronized (queue) {
                     if (!queue.isEmpty()) {
-                        LinkedList<EkgData> saveList = new LinkedList<EkgData>();
                         saveList.addAll(queue);
                         queue.clear();
-                        System.out.println("Saving some data! : " + saveList.toString());
-                        System.out.println("Removed som snazzy data!");
-                        //ekgDAO.save();
+//                        System.out.println("Saving some data! : " + saveList.toString());
+//                        System.out.println("Removed som snazzy data!");
                     }
 //                    if (queue.isEmpty()){
 //                        try{
@@ -49,8 +48,9 @@ public class Consumer implements Runnable {
 //                        }
 //                    }
                 }
+
                 try {
-                    //Simulating a LOONG save
+                    ekgDAO.save(saveList);//Simulating a LOONG save
                     Thread.sleep(1600);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

@@ -38,7 +38,7 @@ public class EkgControllerImpl implements EkgController, EKGObserver {
             enqueue(ekgData);
             System.out.println("Queue size: " + queue.size());
         }
-        ekgDAO.save(ekgData);
+        //ekgDAO.save(ekgData);
     }
 
     public EkgControllerImpl() {
