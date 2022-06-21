@@ -28,7 +28,6 @@ public class Arduino implements Simulator {
     @Override
     public void record() {
         sp.openPort();
-
         System.out.println("PORT OPEN");
         new Thread(new Runnable() {
             @Override
