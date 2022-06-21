@@ -18,6 +18,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Timestamp;
 
+/*@author  Michael Parker, s204814
+ * @version 1.0
+ * @since   2022-06-23*/
+
 public class GuiController extends CPRGuiController implements EKGObserver {
     public Polyline polyline;
     ObservableList<Double> current_point;

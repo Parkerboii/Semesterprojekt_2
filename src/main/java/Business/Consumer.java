@@ -7,6 +7,10 @@ import Data.SQLImplementation;
 import java.util.LinkedList;
 import java.util.concurrent.Semaphore;
 
+/*@author  Marcus Andersen, s215846
+ * @version 1.0
+ * @since   2022-06-23*/
+
 public class Consumer implements Runnable {
 
 

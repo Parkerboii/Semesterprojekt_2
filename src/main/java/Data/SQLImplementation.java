@@ -4,6 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*@author  Jacob Egon Bach Meyer, 204418
+ * @version 1.0
+ * @since   2022-06-23*/
+
 public class SQLImplementation implements EkgDAO, PatientDAO {
 
     @Override
@@ -35,7 +39,7 @@ public class SQLImplementation implements EkgDAO, PatientDAO {
             preparedStatement2.setString(3,patientDTO.getLastName());
             preparedStatement2.addBatch();
             preparedStatement2.executeBatch();
-            //TODO: Kan gemme samme data flere gange, men gemmer dem en af gangen
+            //Kan gemme samme data flere gange, men gemmer dem en af gangen
 
         } catch (SQLException e) {
             e.printStackTrace();
