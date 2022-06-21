@@ -11,6 +11,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+/*@author  Michael Parker, s204814
+ * @version 1.0
+ * @since   2022-06-23*/
+
 public class CPRGuiController {
     @FXML
     public javafx.scene.control.TextField CPRinput;

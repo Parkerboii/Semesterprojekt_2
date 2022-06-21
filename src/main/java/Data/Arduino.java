@@ -8,6 +8,10 @@ import Business.EKGObserver;
 import com.fazecast.jSerialComm.SerialPort;
 import static java.lang.Integer.parseInt;
 
+/*@author  Marcus Andersen, 215846
+ * @version 1.0
+ * @since   2022-06-23*/
+
 public class Arduino implements Simulator {
     private EKGObserver observer;
     private SerialPort sp = null;

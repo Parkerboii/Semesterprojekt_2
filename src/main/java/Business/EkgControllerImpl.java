@@ -2,8 +2,11 @@ package Business;
 import Data.*;
 import com.fazecast.jSerialComm.SerialPort;
 import java.util.LinkedList;
-
 import java.util.List;
+
+/*@author  Michael Parker, s204814
+ * @version 1.0
+ * @since   2022-06-23*/
 
 public class EkgControllerImpl implements EkgController, EKGObserver {
     Simulator ekgDataRecorder = new Arduino("COM5");

@@ -4,22 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*@author  Jacob Egon Bach Meyer, 204418
+ * @version 1.0
+ * @since   2022-06-23*/
+
 public class SQLImplementation implements EkgDAO, PatientDAO {
-//    @Override
-//    public void save(EkgData ekgDTO) {
-//        Connection conn = DatabaseConnector.getConnection();
-//        try {
-//            PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO ekgDATA(CPR, voltage, time) VALUES (?,?,?)");
-//            preparedStatement.setString(1,ekgDTO.getID());
-//            preparedStatement.setDouble(2,ekgDTO.getVoltage());
-//            preparedStatement.setTimestamp(3,ekgDTO.getTime());
-//            preparedStatement.addBatch();
-//            preparedStatement.executeBatch();
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     @Override
     public void save(List<EkgData> ekgData) {
@@ -50,7 +39,7 @@ public class SQLImplementation implements EkgDAO, PatientDAO {
             preparedStatement2.setString(3,patientDTO.getLastName());
             preparedStatement2.addBatch();
             preparedStatement2.executeBatch();
-            //TODO: Kan gemme samme data flere gange, men gemmer dem en af gangen
+            //Kan gemme samme data flere gange, men gemmer dem en af gangen
 
         } catch (SQLException e) {
             e.printStackTrace();

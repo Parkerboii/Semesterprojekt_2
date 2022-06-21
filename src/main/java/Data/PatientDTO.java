@@ -1,5 +1,9 @@
 package Data;
 
+/*@author  Michael Parker, s204814
+ * @version 1.0
+ * @since   2022-06-23*/
+
 public class PatientDTO implements PatientData {
     private String CPR;
     private String lastName;
