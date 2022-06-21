@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-/*@author  Michael Parker, s204814
+/*@author  Niels-Christian Beyer Hansen, s215841
  * @version 1.0
  * @since   2022-06-23*/
 

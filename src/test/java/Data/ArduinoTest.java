@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*@author  Mariam Zeimi Pardo, s215856
+ * @version 1.0
+ * @since   2022-06-23*/
 class ArduinoTest  implements EKGObserver {
     Arduino arduino = new Arduino("COM5");
 
