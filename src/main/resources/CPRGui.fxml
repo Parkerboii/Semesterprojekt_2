@@ -7,9 +7,9 @@
    <children>
       <TextField fx:id="CPRinput" layoutX="227.0" layoutY="161.0" />
       <Label layoutX="205.0" layoutY="165.0" text="CPR" />
-      <Button layoutX="275.0" layoutY="246.0" mnemonicParsing="false" onAction="#recordCPR" text="Submit" />
       <TextField fx:id="firstNameText" layoutX="227.0" layoutY="187.0" />
       <TextField fx:id="lastNameText" layoutX="227.0" layoutY="213.0" />
+      <Button layoutX="275.0" layoutY="246.0" mnemonicParsing="false" onAction="#recordCPR" text="Submit" />
       <Label fx:id="firstName" layoutX="171.0" layoutY="191.0" text="First name" />
       <Label fx:id="lastName" layoutX="172.0" layoutY="217.0" text="Last name" />
       <Label fx:id="fillAll" layoutX="260.0" layoutY="143.0" text="Fill out all fields" />
