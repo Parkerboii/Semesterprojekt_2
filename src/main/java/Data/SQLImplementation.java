@@ -5,21 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLImplementation implements EkgDAO, PatientDAO {
-//    @Override
-//    public void save(EkgData ekgDTO) {
-//        Connection conn = DatabaseConnector.getConnection();
-//        try {
-//            PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO ekgDATA(CPR, voltage, time) VALUES (?,?,?)");
-//            preparedStatement.setString(1,ekgDTO.getID());
-//            preparedStatement.setDouble(2,ekgDTO.getVoltage());
-//            preparedStatement.setTimestamp(3,ekgDTO.getTime());
-//            preparedStatement.addBatch();
-//            preparedStatement.executeBatch();
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     @Override
     public void save(List<EkgData> ekgData) {

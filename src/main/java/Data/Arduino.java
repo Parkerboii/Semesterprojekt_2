@@ -6,6 +6,9 @@ import java.io.*;
 
 import Business.EKGObserver;
 import com.fazecast.jSerialComm.SerialPort;
+import com.fazecast.jSerialComm.SerialPortDataListener;
+import com.fazecast.jSerialComm.SerialPortEvent;
+
 import static java.lang.Integer.parseInt;
 
 public class Arduino implements Simulator {
@@ -16,19 +19,12 @@ public class Arduino implements Simulator {
     public Arduino(String portName) {
         sp = SerialPort.getCommPort(portName);
         sp.setComPortParameters(38400, 8, 1, 0);//Set params.
-       // sp.setFlowControl(SerialPort.FLOW_CONTROL_DISABLED);
         in = new BufferedReader(new InputStreamReader(sp.getInputStream()));
     }
-
-
     @Override
     public void record() {
         sp.openPort();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         System.out.println("PORT OPEN");
         new Thread(new Runnable() {
             @Override
@@ -45,6 +41,11 @@ public class Arduino implements Simulator {
                                 observer.handle(new EkgDTO(ekgData, new Timestamp(System.currentTimeMillis())));
                             }
                         }
+                        try {
+                            Thread.sleep(3);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
                     } catch (IOException ex) {
                         ex.printStackTrace();
@@ -60,6 +61,6 @@ public class Arduino implements Simulator {
     }
 
     public void close() {
-            sp.closePort();
+        sp.closePort();
     }
 }

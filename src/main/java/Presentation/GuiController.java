@@ -22,6 +22,7 @@ public class GuiController extends CPRGuiController implements EKGObserver {
     public Polyline polyline;
     ObservableList<Double> current_point;
     double border = 200.0;
+    int cycle = 0;
 
     EkgController ekgController = new EkgControllerImpl();
     @FXML
@@ -44,7 +45,6 @@ public class GuiController extends CPRGuiController implements EKGObserver {
     public void startEkg(MouseEvent mouseEvent) {
         if (CPRnumber != null){
             ekgController.startRecording();
-            polyline.getPoints().addAll(10.0, 10.0,20.0,20.0);
             this.startTime = new Timestamp(System.currentTimeMillis());
             ekgController.registerObserver(this);
         }
@@ -52,16 +52,16 @@ public class GuiController extends CPRGuiController implements EKGObserver {
 
     @Override
     public void handle(Data.EkgData ekgData) {
-        //current_point = polyline.getPoints();
         //Bruger getTime metoden, og bruger så en anden getTime metode, som konvertere fra Timestamp til long, og
         // dividere med 1000 for at få sekunder
         double x = (ekgData.getTime().getTime()-startTime.getTime())/20.0;
+        if (x > 300+300*cycle){
+            cycle++;
+            polyline.getPoints().clear();
+        }
         int y = ekgData.getVoltage()/10;
-        //System.out.println(polyline.getPoints());
-        Platform.runLater(()-> polyline.getPoints().addAll(x, (double) y));
-        //if (current_point.size() >= border){
-         //   current_point.clear();
-        //}
+        Platform.runLater(()-> polyline.getPoints().addAll(x-100*cycle, (double) y));
+
     }
 
     /*Stage stage;
