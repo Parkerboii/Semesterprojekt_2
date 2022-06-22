@@ -44,9 +44,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Resultset {
-    public static void getResultSet(){
+    public static List<EkgDTO> getResultSet(){
         Connection db_con = null;
         PreparedStatement db_Statement = null;
         ResultSet result_set = null;
@@ -63,12 +65,17 @@ public class Resultset {
             int Row_Count = 0;
             System.out.println("Display all the records in ResultSet object");
             System.out.println("CPR, voltage, time");
+            List<EkgDTO> data = new ArrayList<>();
             while (result_set.next()) {
                 System.out.println(result_set.getString("CPR")+"\t\t"+result_set.getInt("voltage")+"\t\t"+result_set.getTimestamp("time"));
                 // Row count will get the length of result set
                 Row_Count++;
+                EkgDTO ekgDTO = new EkgDTO(result_set.getInt("voltage"), result_set.getTimestamp("time"));
+                data.add(ekgDTO);
+
             }
             System.out.println("Total number of rows in ResultSet object = "+Row_Count);
+            return data;
 
         }
         catch (SQLException e) {

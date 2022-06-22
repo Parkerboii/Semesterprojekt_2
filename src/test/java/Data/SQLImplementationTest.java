@@ -8,9 +8,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+/*@author  Mariam Zeimi Pardo, s215856
+ * @version 1.0
+ * @since   2022-06-23*/
 class SQLImplementationTest {
 
     @Test
@@ -54,7 +56,7 @@ class SQLImplementationTest {
         data.setTime(ts);
         impl.save((List<EkgData>) data);
 
-        System.out.printf(impl.load(ts).toString());
+       // System.out.printf(impl.load(ts).toString());
 
     }
 

@@ -3,6 +3,7 @@ package Presentation;
 import Business.EKGObserver;
 import Business.EkgController;
 import Business.EkgControllerImpl;
+import Data.EkgDTO;
 import Data.Resultset;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Polyline;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class GuiController extends CPRGuiController implements EKGObserver {
     public Polyline polyline;
@@ -61,7 +63,14 @@ public class GuiController extends CPRGuiController implements EKGObserver {
     }
 
     public void VisPatientData(ActionEvent actionEvent) {
-        Resultset.getResultSet();
+
+
+        List<EkgDTO> resultSet = Resultset.getResultSet();
+        startTime = resultSet.get(0).getTime();
+        for (EkgDTO ekgData : resultSet) {
+            polyline.getPoints().addAll((ekgData.getTime().getTime()-startTime.getTime())/250.0, (double) (ekgData.getVoltage()*100));
+
+        }
     }
 
     /*Stage stage;
