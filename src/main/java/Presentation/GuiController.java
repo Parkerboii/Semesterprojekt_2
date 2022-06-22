@@ -26,6 +26,7 @@ public class GuiController extends CPRGuiController implements EKGObserver {
     public Polyline polyline;
     ObservableList<Double> current_point;
     double border = 200.0;
+    int cycle = 0;
 
     EkgController ekgController = new EkgControllerImpl();
     @FXML
